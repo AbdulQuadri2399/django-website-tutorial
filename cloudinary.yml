@@ -1,0 +1,19 @@
+---
+development:
+  cloud_name: mycloudinaryspace
+  api_key: '356991558555913'
+  api_secret: sHjXSfu-IV-osjl1RUqlmdoQOF8
+  enhance_image_tag: true
+  static_file_support: false
+production:
+  cloud_name: mycloudinaryspace
+  api_key: '356991558555913'
+  api_secret: sHjXSfu-IV-osjl1RUqlmdoQOF8
+  enhance_image_tag: true
+  static_file_support: true
+test:
+  cloud_name: mycloudinaryspace
+  api_key: '356991558555913'
+  api_secret: sHjXSfu-IV-osjl1RUqlmdoQOF8
+  enhance_image_tag: true
+  static_file_support: false
