@@ -8,10 +8,25 @@
         <img src = "{{ album.album_logo }}">
         <h1>{{ album.album_title }} - {{ album.song_set.count }}</h1>
         <h3>{{ album.artist }}</h3>
-        <ul>
-            {% for song in album.song_set.all %}
-            <li>{{ song.pk }}: {{ song.song_title }}.{{ album.file_type }}</li>
-            {% endfor %}
-        </ul>
+        {% if error_message %}
+            <p><strong>{{ error_message }}</strong></p>
+        {% endif %}
+
+<form action = "{% url 'music:favourite' album.id %}" method="post">
+    {% csrf_token %}
+    <ol>
+    {% for song in album.song_set.all %}
+        <li>
+        <input type = "radio" id = "song{{ forloop.counter }}" name="song" value="{{ song.id }}"/>
+        <label for ="song{{ forloop.counter }}">{{ song.song_title }}</label>
+        {% if song.is_favourite %}
+            <span style = "color:red;">*</span>
+        {% endif %}
+            </li>
+    {% endfor %}
+        </ol>
+    <input type="submit" value="Make Favourite"/>
+    <input type="submit" formaction="{% url 'music:unfavourite' album.id %}" value="Unfavourite"/>
+</form>
 </body>
 </html>
